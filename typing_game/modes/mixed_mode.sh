@@ -8,13 +8,13 @@ generate_random_mixed() {
 
 # Function to handle the mixed mode
 mixed_mode() {
-    echo "You selected: Mixed (Numbers and Letters)"
-    echo "Type the characters as fast as you can!"
-    echo "Press Ctrl+C to exit."
+    echo -e "${CYAN}You selected: Mixed (Numbers and Letters)${NC}"
+    echo -e "${BLUE}Type the characters as fast as you can!${NC}"
+    echo -e "${RED}Press Ctrl+C to exit.${NC}"
 
     while true; do
         random_mixed=$(generate_random_mixed 5)
-        echo "Type these characters: $random_mixed"
+        echo -e "${YELLOW}Type these characters: ${random_mixed}${NC}"
 
         start_time=$(date +%s)
         read -p "Your input: " user_input
@@ -22,10 +22,10 @@ mixed_mode() {
         time_taken=$((end_time - start_time))
 
         if [[ "$user_input" == "$random_mixed" ]]; then
-            echo "Correct! You took $time_taken seconds."
+            echo -e "${GREEN}Correct! You took ${time_taken} seconds.${NC}"
             total_correct=$((total_correct + 1))
         else
-            echo "Incorrect! The correct characters were $random_mixed."
+            echo -e "${RED}Incorrect! The correct characters were ${random_mixed}.${NC}"
             total_incorrect=$((total_incorrect + 1))
         fi
 
@@ -36,4 +36,4 @@ mixed_mode() {
             break
         fi
     done
-}}
+}

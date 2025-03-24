@@ -8,13 +8,13 @@ generate_random_letter() {
 
 # Function to handle the letter mode
 letter_mode() {
-    echo "You selected: Letters"
-    echo "Type the letters as fast as you can!"
-    echo "Press Ctrl+C to exit."
+    echo -e "${CYAN}You selected: Letters${NC}"
+    echo -e "${BLUE}Type the letters as fast as you can!${NC}"
+    echo -e "${RED}Press Ctrl+C to exit.${NC}"
 
     while true; do
         random_letters=$(generate_random_letter 5)
-        echo "Type these letters: $random_letters"
+        echo -e "${YELLOW}Type these letters: ${random_letters}${NC}"
 
         start_time=$(date +%s)
         read -p "Your input: " user_input
@@ -22,10 +22,10 @@ letter_mode() {
         time_taken=$((end_time - start_time))
 
         if [[ "$user_input" == "$random_letters" ]]; then
-            echo "Correct! You took $time_taken seconds."
+            echo -e "${GREEN}Correct! You took ${time_taken} seconds.${NC}"
             total_correct=$((total_correct + 1))
         else
-            echo "Incorrect! The correct letters were $random_letters."
+            echo -e "${RED}Incorrect! The correct letters were ${random_letters}.${NC}"
             total_incorrect=$((total_incorrect + 1))
         fi
 

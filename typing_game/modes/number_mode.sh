@@ -8,13 +8,13 @@ generate_random_number() {
 
 # Function to handle the number mode
 number_mode() {
-    echo "You selected: Numbers"
-    echo "Type the numbers as fast as you can!"
-    echo "Press Ctrl+C to exit."
+    echo -e "${CYAN}You selected: Numbers${NC}"
+    echo -e "${BLUE}Type the numbers as fast as you can!${NC}"
+    echo -e "${RED}Press Ctrl+C to exit.${NC}"
 
     while true; do
         random_number=$(generate_random_number 5)
-        echo "Type this number: $random_number"
+        echo -e "${YELLOW}Type this number: ${random_number}${NC}"
 
         start_time=$(date +%s)
         read -p "Your input: " user_input
@@ -22,10 +22,10 @@ number_mode() {
         time_taken=$((end_time - start_time))
 
         if [[ "$user_input" == "$random_number" ]]; then
-            echo "Correct! You took $time_taken seconds."
+            echo -e "${GREEN}Correct! You took ${time_taken} seconds.${NC}"
             total_correct=$((total_correct + 1))
         else
-            echo "Incorrect! The correct number was $random_number."
+            echo -e "${RED}Incorrect! The correct number was ${random_number}.${NC}"
             total_incorrect=$((total_incorrect + 1))
         fi
 
