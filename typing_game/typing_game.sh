@@ -1,4 +1,8 @@
 #!/bin/bash
+# Global variables for scoring
+total_correct=0
+total_incorrect=0
+total_time=0
 
 # Source the mode scripts
 source ./modes/number_mode.sh
@@ -32,7 +36,6 @@ main() {
     welcome_message
     mode_selection
 
-    # Handle user's choice
     case $choice in
         1) number_mode ;;
         2) letter_mode ;;
@@ -41,7 +44,7 @@ main() {
         5) echo "Exiting the game. Goodbye!" ;;
         *) echo "Invalid choice. Please try again." ;;
     esac
-}
 
-# Run the game
-main
+    # Display the user's score
+    display_score
+}

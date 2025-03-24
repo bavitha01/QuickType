@@ -36,26 +36,21 @@ custom_words_mode() {
     for word in "${words[@]}"; do
         echo "Type this word: $word"
 
-        # Record the start time
         start_time=$(date +%s)
-
-        # Read user input
         read -p "Your input: " user_input
-
-        # Record the end time
         end_time=$(date +%s)
-
-        # Calculate time taken
         time_taken=$((end_time - start_time))
 
-        # Check if the input is correct
         if [[ "$user_input" == "$word" ]]; then
             echo "Correct! You took $time_taken seconds."
+            total_correct=$((total_correct + 1))
         else
             echo "Incorrect! The correct word was $word."
+            total_incorrect=$((total_incorrect + 1))
         fi
 
-        # Ask if the user wants to continue
+        total_time=$((total_time + time_taken))
+
         read -p "Do you want to continue to the next word? (y/n): " continue
         if [[ "$continue" != "y" ]]; then
             break

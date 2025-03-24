@@ -13,33 +13,27 @@ mixed_mode() {
     echo "Press Ctrl+C to exit."
 
     while true; do
-        # Generate a random string of 5 characters (numbers and letters)
         random_mixed=$(generate_random_mixed 5)
         echo "Type these characters: $random_mixed"
 
-        # Record the start time
         start_time=$(date +%s)
-
-        # Read user input
         read -p "Your input: " user_input
-
-        # Record the end time
         end_time=$(date +%s)
-
-        # Calculate time taken
         time_taken=$((end_time - start_time))
 
-        # Check if the input is correct
         if [[ "$user_input" == "$random_mixed" ]]; then
             echo "Correct! You took $time_taken seconds."
+            total_correct=$((total_correct + 1))
         else
             echo "Incorrect! The correct characters were $random_mixed."
+            total_incorrect=$((total_incorrect + 1))
         fi
 
-        # Ask if the user wants to continue
+        total_time=$((total_time + time_taken))
+
         read -p "Do you want to continue? (y/n): " continue
         if [[ "$continue" != "y" ]]; then
             break
         fi
     done
-}
+}}

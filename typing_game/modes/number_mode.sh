@@ -13,30 +13,24 @@ number_mode() {
     echo "Press Ctrl+C to exit."
 
     while true; do
-        # Generate a random number with 5 digits
         random_number=$(generate_random_number 5)
         echo "Type this number: $random_number"
 
-        # Record the start time
         start_time=$(date +%s)
-
-        # Read user input
         read -p "Your input: " user_input
-
-        # Record the end time
         end_time=$(date +%s)
-
-        # Calculate time taken
         time_taken=$((end_time - start_time))
 
-        # Check if the input is correct
         if [[ "$user_input" == "$random_number" ]]; then
             echo "Correct! You took $time_taken seconds."
+            total_correct=$((total_correct + 1))
         else
             echo "Incorrect! The correct number was $random_number."
+            total_incorrect=$((total_incorrect + 1))
         fi
 
-        # Ask if the user wants to continue
+        total_time=$((total_time + time_taken))
+
         read -p "Do you want to continue? (y/n): " continue
         if [[ "$continue" != "y" ]]; then
             break
