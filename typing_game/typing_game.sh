@@ -1,4 +1,5 @@
 #!/bin/bash
+set -x  # Enable debugging
 # Global variables for scoring
 total_correct=0
 total_incorrect=0
@@ -66,6 +67,14 @@ display_score() {
 
     echo -e "${CYAN}============================================${NC}"
 }
+# Function to handle graceful exit
+cleanup_and_exit() {
+    echo -e "\n${RED}Exiting the game. Goodbye!${NC}"
+    reset  # Reset the terminal (optional, ensures the terminal is clean)
+    exit 0
+}
+# Trap SIGINT (Ctrl+C) and call cleanup_and_exit
+trap cleanup_and_exit SIGINT
 # Main game loop
 main() {
     welcome_message
@@ -83,3 +92,4 @@ main() {
     # Display the user's score
     display_score
 }
+main
