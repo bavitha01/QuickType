@@ -1,5 +1,4 @@
 #!/bin/bash
-set -x  # Enable debugging
 # Global variables for scoring
 total_correct=0
 total_incorrect=0
